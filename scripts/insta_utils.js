@@ -32,33 +32,10 @@ function fetchPetImages(pets, count, token) {
       access_token:token,
     };
 
-    for (id in pets) {
-        console.log("tag : " + pets[id])
-        fetchImagesWithTag(access_parameters, count, pets[id]);
-    }
-}
-
-
-function fetchImagesWithTag(access_parameters, count, tag) {
-    var instagramUrl = 'https://api.instagram.com/v1/tags/' + tag + '/media/recent?callback=?&count='+ count;
-
-      $.getJSON(instagramUrl, access_parameters, function(data){
-        onDataLoaded(data, 'tag', tag);
-        return callback;
-      });
-}
-
-
-function fetchPetImages_async(pets, count, token) {
-    var access_parameters = {
-      access_token:token,
-    };
-
     async.each(pets, function(item, callback){
         console.log("item : " + item);
-        fetchImagesWithTag_async(access_parameters, count, item, callback);
+        fetchImagesWithTag(access_parameters, count, item, callback);
       }, function(err) {
-        console.log("Finished!");
         $container.isotope('reloadItems');
         $container.imagesLoaded(function(){
               $('#galleryContainer').isotope({
@@ -73,18 +50,27 @@ function fetchPetImages_async(pets, count, token) {
     });
 }
 
-function fetchImagesWithTag_async(access_parameters, count, tag, callback) {
+function fetchImagesWithTag(access_parameters, count, tag, callback) {
     var instagramUrl = 'https://api.instagram.com/v1/tags/' + tag + '/media/recent?callback=?&count='+ count;
-
-      $.getJSON(instagramUrl, access_parameters, function(data){
-            onDataLoaded(data, 'tag', tag);
-            return callback(null);
-      });
+    $.getJSON(instagramUrl, access_parameters, function(data){
+          onDataLoaded(data, 'tag', tag);
+          return callback(null);
+    });
+    $container.isotope('reloadItems');
+    $container.imagesLoaded(function(){
+          $('#galleryContainer').isotope({
+           filter: '*',
+           animationOptions: {
+              duration: 750,
+              easing: 'linear',
+              queue: false
+           }
+         });
+    });
 }
 
 
 function fetchImagesForSelf(count, token) {
-    //console.log("tag : " + tag)
     var access_parameters = {
       access_token:token,
     };
@@ -138,18 +124,6 @@ function onDataLoaded(data, type, tag) {
                 var ele = $('#galleryContainer').append(Utils.template(data));
               }
           }
-          // $container.isotope('reloadItems');
-          // $container.imagesLoaded(function(){
-          //     $('#galleryContainer').isotope({
-          //      filter: '*',
-          //      animationOptions: {
-          //         duration: 750,
-          //         easing: 'linear',
-          //         queue: false
-          //      }
-          //    });
-          // });
-
        } else {
          alert('Empty');
        }

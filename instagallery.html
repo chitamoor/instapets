@@ -134,7 +134,7 @@
               return false;
           });
 
-          fetchPetImages_async(["dog", "hamster", "cat", "bird", "rabbit"], 20, Globals.def_access_token);
+          fetchPetImages(["dog", "hamster", "cat", "bird", "rabbit"], 20, Globals.def_access_token);
 
           if (Globals.your_access_token) {
             fetchImagesForSelf(10, Globals.your_access_token);
