@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>InstaPets!</title>
+    <link rel="stylesheet" href="css/instagallery.css">
+    <link rel="stylesheet" href="css/offcanvas.css">
+
+    <script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.isotope/1.5.25/jquery.isotope.js" type="text/javascript"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.4/handlebars.min.js"></script>
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">InstaPets</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="instagallery.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="instagramapi.html">InstagramAPI</a></li>
+          </ul>
+        </div>
+        <!-- /.nav-collapse -->
+      </div>
+      <!-- /.container -->
+    </div>
+    <div class="container" role="main">
+      <div class="row">
+        <div class="col-xs-12 col-sm-9">
+          <div class="row">
+            <h1>Thoughts on the Instagram API and platform</h1>
+
+            <h3>General comments on the Instagram API</h2>
+            <ul>
+            <li>URLs follow a RESTful convention</li>
+            <li>The API exposes the underlying entities and relationships in an intuitive manner</li>
+            <li>Payloads are self descriptive, although they seem a bit more coarse grained for certain API end-points. Please see a suggestion - <a href="#section6">6</a> in the <strong>Enhancements/Suggestions</strong> section </li>
+            <li>The error messages are clear</li>
+            <li>The API documentation is helpful to the point of eliminating any initial friction in getting started. Clear examples of the end points are provided. Having a sample JSON Payload/response for every end-point is very helpful</li>
+            </ul>
+
+            <h3>Enhancements/Suggestions for the Instagram API and platform</h2>
+
+            <ol>
+            <h5><li>Sorting options</h5>
+            Sorting options in the API are pre-built. Would be good to expose them as URL params for more fine grained control</li>
+            <h5><li>Documentation</h5>
+            Although all the API end points are well documented, it would be helpful to have a general section on the most common use-cases and the API endpoints the use-cases map to. For example, if a developer wants to find a list of all the media for a given hash tag (which I assume is a common use-case), he or she currently has to go through all the endpoint documentation looking for the intended one.</p></li>
+            <h5><li>Instagram App (consumer version)</h5>
+            Although Instagram has gained masssive adoption primarily due to it's simple/minimal feature set, but IMO, the following feature set would greatly enhance utility without cluttering the app -
+            <ul>
+            <li><strong>Re-gram</strong>. Similar to 'Re-tweeting'</li>
+            <li><strong>Overlay</strong>. Being able to add (or overlay) text and links on to the media</li>
+            </ul>
+            <h5><li>Instagram Enterprise App</h5>
+            The Enterprise version of the app would be targeted specifically for brands, marketers and enterprises wanting to engage their audiences through the Instagram platform. IMO, it would make sense to roll out the "enterprise" feature set into a separate version of the app, thus preserving the simplicity of the consumer version.
+            Basic feature set for the enterprise version -
+            <ul>
+            <li> <strong>Business/profile</strong> page (like FB Business page)</li>
+            <li> Being able to add (or overlay) text and links on to the media </li>
+            <li> Ability to create <strong>contests</strong> - both on the device and web </li>
+            <li> Ability to view and track various metrics - campaign, audience, contests etc - similar to <strong>FaceBook Insights</strong></p></li></ul></li>
+
+            <h5><li>Instagram Enterprise API</h5>
+            <p>Additional API endpoints for enterprise users.
+            <ul><li><strong>Contests API</strong></li>
+            <li><strong>InstaInsights</strong> - Similar to <strong>FB Insights API</strong></li>
+            <li>Programatically managing the Media on the site</li>
+            <ul><li>Being able to create photos on the fly - will be useful to prepopulate a set of images for a given enterprise site</li>
+            <li>Being able to programmatically categorize/sort/group media</li></ul>
+            </ul>
+
+            <h5><li>InstaGraphAPI (similar to the FaceBook Graph API)</h5>
+            <p>Map the underlying Instagram entity relationships on to a Graph and expose that Graph through an API similar to the FaceBook Graph API. Having a single conceptual/programming model for all (or most ) of the FB APIs would greatly simplify the development efforts</p></li>
+
+            <h5><li>Query DSL or some subset of SQL (similar to FQL)</h5>
+            <p>
+            <ul><li id="section6">The current payload is pretty coarse-grained. Having the ability to only get what the developers need would substantially simplify code and also make the apps less prone to changes</li>
+
+            <li>Currently the developers have to programatically create the "join" functionality for traversing complex relationships. Providing a "join" functionality through a Query DSL would be great.
+            e.g get a list of users that posted a media with a specific hashtag that have the most likes.</li></ul></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-50993121-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </body>
+
+</html>
+
