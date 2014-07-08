@@ -44,10 +44,16 @@ img {
     z-index: 1;
 }
 
-.pstats {
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #D3D3D3;
+.glyphicon-like, .icon-like {
+    background-image: url("http://png-1.findicons.com/files/icons/2015/24x24_free_application/24/heart.png");
+    height: 24px;
+    width: 24px;
+    float: left;
+}
+
+.pcomment {
+    display: inline-block;
+    float: right;
 }
 
 .isotope,

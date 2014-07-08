@@ -74,10 +74,13 @@
           <a href="{{link}}"><img class="pimage" src="{{url}}"></a>
           <div class="caption">
             <p class='pstats'>
-                Likes <span class="badge">{{likes}}</span>
+                <i class="glyphicon icon-like glyphicon-like"></i> <span class="badge">{{likes}}</span>&nbsp;&nbsp;
                 Owner: <a href="http://instagram.com/{{owner}}">
-                   {{owner}}
-                </a>
+                   {{trim owner}}
+                </a>&nbsp;&nbsp;
+                <span class="pcommon">
+                  <i class="glyphicon glyphicon-comment"></i> <span class="badge">{{comments}}</span>
+                </div>
             </p>
           </div>
       </div>

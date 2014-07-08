@@ -1,6 +1,7 @@
 var Globals = Globals || {};
 
-Globals.def_access_token = '12002818.f59def8.8a4fc8e799ff41ca877e0cca2e50180a';
+//Globals.def_access_token = '12002818.f59def8.8a4fc8e799ff41ca877e0cca2e50180a';
+Globals.def_access_token = '12002818.de6d98a.c726609ea8ef47d3b6ce9ca8bfcc3379';
 Globals.your_access_token = null;
 
 function Utils () {}
@@ -20,7 +21,7 @@ Utils.template = null
 
 function intializeHandleBar() {
     Handlebars.registerHelper('trim', function(passedString) {
-      var string = passedString.substring(0,25);
+      var string = passedString.substring(0,10);
       return new Handlebars.SafeString(string)
     });
 
@@ -68,7 +69,6 @@ function fetchImagesWithTag(access_parameters, count, tag, callback) {
          });
     });
 }
-
 
 function fetchImagesForSelf(count, token) {
     var access_parameters = {
@@ -118,7 +118,8 @@ function onDataLoaded(data, type, tag) {
                       owner: photo.user.username,
                       link:photo.link,
                       url: photo.images.low_resolution.url,
-                      likes: photo.likes.count
+                      likes: photo.likes.count,
+                      comments: photo.comments.count
                 };
                 console.log("Appending item to the galleryContainer!");
                 var ele = $('#galleryContainer').append(Utils.template(data));
