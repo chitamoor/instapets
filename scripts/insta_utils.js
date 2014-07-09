@@ -1,7 +1,6 @@
 var Globals = Globals || {};
 
-//Globals.def_access_token = '12002818.f59def8.8a4fc8e799ff41ca877e0cca2e50180a';
-Globals.def_access_token = '12002818.de6d98a.c726609ea8ef47d3b6ce9ca8bfcc3379';
+Globals.def_access_token = '12002818.f59def8.8a4fc8e799ff41ca877e0cca2e50180a';
 Globals.your_access_token = null;
 
 function Utils () {}
